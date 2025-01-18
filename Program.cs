@@ -10,14 +10,15 @@ namespace project_17_12_24
             try
             {
                 var list = new List<int> { 1, 2, -1, -2, 4, 6, -11, 24, 99, -200, 11 };
-                int counter = 0;
-                List<int> positiveNumbers = list.Where(x => x > 0).ToList();
-                foreach (var item in positiveNumbers)
-                {
-                    Console.WriteLine(item);
-                    counter++;
-                }
-                Console.WriteLine($"Count of positive numbers: {counter}");
+                int counter1 = 0, counter2 = 0;
+                list.ForEach(x => {
+                    if (x < 0) 
+                        counter1++;
+                    if (list.Count(y => y == x) == 1)
+                        counter2++;
+                });
+                Console.WriteLine($"Quantity of negative numbers: {counter1}");
+                Console.WriteLine($"Quantity of unique numbers: {counter2}");
             }
             catch (Exception e)
             {
